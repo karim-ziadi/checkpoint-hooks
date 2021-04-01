@@ -6,3 +6,11 @@
 .MovieImg {
     height: 50%;
 }
+
+.MovieBody {
+    background-color: rgb(40, 69, 107);
+    color: white;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    text-align: center;
+}

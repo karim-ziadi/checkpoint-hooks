@@ -3,10 +3,11 @@ import { Navbar, Nav, Form, Button, FormControl } from "react-bootstrap";
 import ReactStars from "react-stars";
 import "./MyNavbar.css";
 
-function MyNavbar() {
+function MyNavbar({ getRateSearch, getTitleSearch }) {
     const ratingChanged = (newRating) => {
-        console.log(newRating);
+        getRateSearch(newRating);
     };
+
     return (
         <Navbar bg="dark" variant="dark">
             <Navbar.Brand href="#home">Movie App</Navbar.Brand>
@@ -28,6 +29,7 @@ function MyNavbar() {
                     type="text"
                     placeholder="Search"
                     className="mr-sm-2"
+                    onChange={(e) => getTitleSearch(e.target.value)}
                 />
                 <Button variant="outline-info">Search</Button>
             </Form>

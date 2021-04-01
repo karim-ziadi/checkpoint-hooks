@@ -1,9 +1,11 @@
 import "./App.css";
 import MovieList from "./Components/MovieList/MovieList";
 import MyNavbar from "./Components/MyNavBar/MyNavbar";
+import React, { useState } from "react";
+import AddMovie from "./Components/AddMovie/AddMovie";
 
 function App() {
-    let movies = [
+    let moviesData = [
         {
             title: "Titanic",
             description:
@@ -68,10 +70,33 @@ function App() {
             rate: 2,
         },
     ];
+    const [rateSearch, setRateSearch] = useState(0);
+    const [titleSearch, setTitleSearch] = useState("");
+    const [movies, setMovies] = useState(moviesData);
+    const getRateSearch = (inputrate) => {
+        setRateSearch(inputrate);
+    };
+    const getTitleSearch = (inputtitle) => {
+        setTitleSearch(inputtitle);
+    };
+    const getNewMovie = (newMovie) => {
+        setMovies([...movies, newMovie]);
+    };
+
     return (
         <div className="App">
-            <MyNavbar />
-            <MovieList myMoviesList={movies} />
+            <MyNavbar
+                getRateSearch={getRateSearch}
+                getTitleSearch={getTitleSearch}
+            />
+            <div className="Addmovie">
+                <AddMovie getNewMovie={getNewMovie} />
+            </div>
+            <MovieList
+                moviesData={movies}
+                rateSearch={rateSearch}
+                titleSearch={titleSearch}
+            />
         </div>
     );
 }
